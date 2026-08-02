@@ -15,7 +15,11 @@
       "eslint --fix --max-warnings=0",
       "prettier --write"
     ],
-    "*.{js,mjs,cjs,json,css,md}": [
+    "*.{js,mjs,cjs,json,md}": [
+      "prettier --write"
+    ],
+    "*.css": [
+      "stylelint --fix --max-warnings=0",
       "prettier --write"
     ]
   },
@@ -26,18 +30,22 @@
     "typecheck": "tsc -b --noEmit",
     "lint": "eslint . --max-warnings=0",
     "lint:fix": "eslint . --fix",
+    "lint:css": "stylelint \"src/**/*.css\" --max-warnings 0",
+    "lint:css:fix": "stylelint \"src/**/*.css\" --fix",
+    "commitlint": "commitlint --edit",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "e2e": "playwright test",
+    "e2e:headed": "playwright test --headed",
     "e2e:install": "playwright install --with-deps chromium",
     "postinstall": "node scripts/fetch-ffmpeg.mjs && node scripts/generate-icons.mjs",
     "prepare": "husky",
     "fetch:ffmpeg": "node scripts/fetch-ffmpeg.mjs",
     "icons": "node scripts/generate-icons.mjs",
-    "release": "node scripts/version-bump.mjs && node scripts/changelog.mjs && git add -A && git commit -m \"chore(release): v$(node -p 'require(\"./package.json\").version')\" && git tag \"v$(node -p 'require(\"./package.json\").version')\""
+    "release": "node scripts/release.mjs"
   },
   "dependencies": {
     "@ffmpeg/core": "^0.12.10",
@@ -54,6 +62,8 @@
     "zustand": "^5.0.3"
   },
   "devDependencies": {
+    "@commitlint/cli": "^21.2.1",
+    "@commitlint/config-conventional": "^21.2.0",
     "@eslint/js": "^9.18.0",
     "@playwright/test": "^1.50.1",
     "@testing-library/dom": "^10.4.0",
@@ -78,6 +88,8 @@
     "pngjs": "^7.0.0",
     "postcss": "^8.5.1",
     "prettier": "^3.4.2",
+    "stylelint": "^17.14.1",
+    "stylelint-config-standard": "^40.0.0",
     "tailwindcss": "^3.4.17",
     "typescript": "~5.7.3",
     "typescript-eslint": "^8.21.0",
