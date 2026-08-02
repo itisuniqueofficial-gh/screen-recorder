@@ -8,6 +8,7 @@ import {
   APP_VERSION,
 } from '@/constants';
 import { IconExternalLink, IconGithub, IconKeyboard, IconWifiOff } from '@/components/ui/icons';
+import { PageHeader, SectionCard } from '@/components/ui/primitives';
 
 const PRIVACY_POINTS = [
   'Everything is processed locally in your browser using WebRTC and FFmpeg (WebAssembly).',
@@ -17,14 +18,11 @@ const PRIVACY_POINTS = [
 
 export default function AboutPage() {
   return (
-    <div className="space-y-8">
-      <header>
-        <h1 className="text-2xl font-semibold">About</h1>
-        <p className="mt-1 text-sm text-muted-foreground">{APP_DESCRIPTION}</p>
-      </header>
+    <div className="flex w-full flex-col gap-8">
+      <PageHeader title="About" description={APP_DESCRIPTION} />
 
-      <section className="sr-card space-y-4">
-        <div className="flex items-center gap-3">
+      <SectionCard>
+        <div className="flex flex-wrap items-center gap-3">
           <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
             {APP_NAME}
           </span>
@@ -34,7 +32,7 @@ export default function AboutPage() {
         </div>
 
         <div>
-          <h2 className="text-sm font-semibold">Privacy first</h2>
+          <h2 className="text-base font-semibold">Privacy first</h2>
           <ul className="mt-2 space-y-2">
             {PRIVACY_POINTS.map((point) => (
               <li key={point} className="flex items-start gap-2 text-sm text-muted-foreground">
@@ -55,9 +53,9 @@ export default function AboutPage() {
             </span>
           ))}
         </div>
-      </section>
+      </SectionCard>
 
-      <section className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-3">
         <a
           href={APP_REPO}
           target="_blank"
@@ -80,7 +78,7 @@ export default function AboutPage() {
           <IconKeyboard size={18} />
           Keyboard shortcuts
         </Link>
-      </section>
+      </div>
     </div>
   );
 }

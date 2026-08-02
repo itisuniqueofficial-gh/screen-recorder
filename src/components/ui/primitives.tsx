@@ -1,5 +1,49 @@
 import type { ButtonHTMLAttributes, ReactNode } from 'react';
 
+export function PageHeader({
+  title,
+  description,
+  actions,
+}: {
+  title: string;
+  description?: string;
+  actions?: ReactNode;
+}) {
+  return (
+    <header className="flex w-full flex-wrap items-start justify-between gap-4">
+      <div className="min-w-0">
+        <h1 className="text-2xl font-semibold tracking-tight">{title}</h1>
+        {description && <p className="mt-1 text-sm text-muted-foreground">{description}</p>}
+      </div>
+      {actions && <div className="flex flex-wrap items-center gap-3">{actions}</div>}
+    </header>
+  );
+}
+
+export function SectionCard({
+  title,
+  description,
+  className = '',
+  children,
+}: {
+  title?: string;
+  description?: string;
+  className?: string;
+  children: ReactNode;
+}) {
+  return (
+    <section className={`sr-card flex w-full flex-col gap-5 p-5 sm:p-6 ${className}`.trim()}>
+      {(title || description) && (
+        <div>
+          {title && <h2 className="text-base font-semibold">{title}</h2>}
+          {description && <p className="mt-1 text-sm text-muted-foreground">{description}</p>}
+        </div>
+      )}
+      {children}
+    </section>
+  );
+}
+
 export interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   label: string;
   active?: boolean;
@@ -24,7 +68,7 @@ export function IconButton({
       type="button"
       aria-label={label}
       title={label}
-      className={`inline-flex h-9 w-9 items-center justify-center rounded-sm transition-colors disabled:opacity-40 disabled:cursor-not-allowed ${tone} ${className}`}
+      className={`inline-flex h-11 w-11 items-center justify-center rounded-sm transition-colors disabled:opacity-40 disabled:cursor-not-allowed ${tone} ${className}`}
       {...rest}
     >
       {children}
