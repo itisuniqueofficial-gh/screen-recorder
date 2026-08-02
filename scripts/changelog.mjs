@@ -1,5 +1,5 @@
 import { execSync } from 'node:child_process';
-import { existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -82,7 +82,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 `;
 
-let existing = existsSync(changelogPath) ? readFileSync(changelogPath, 'utf8') : '';
+let existing = '';
+try {
+  existing = readFileSync(changelogPath, 'utf8');
+} catch {
+  existing = '';
+}
 existing = existing.replace(/^# Changelog[\s\S]*?\n\n/, '');
 if (existing.startsWith('## [Unreleased]')) {
   existing = existing.replace('## [Unreleased]', '');
