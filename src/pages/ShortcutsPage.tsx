@@ -28,7 +28,7 @@ export default function ShortcutsPage() {
       </header>
 
       {enabled ? (
-        <div className="overflow-hidden rounded-lg border border-border">
+        <div className="overflow-hidden rounded-sm border border-border">
           <table className="w-full text-left text-sm">
             <thead className="border-b border-border bg-surface">
               <tr>
@@ -57,7 +57,7 @@ export default function ShortcutsPage() {
                     {shortcut.description}
                   </td>
                   <td className="px-4 py-3 text-right">
-                    <kbd className="rounded-md border border-border bg-surface px-2 py-1 text-xs text-foreground">
+                    <kbd className="rounded-sm border border-border bg-surface px-2 py-1 text-xs text-foreground">
                       {formatShortcutKeys(shortcut.keys)}
                     </kbd>
                   </td>

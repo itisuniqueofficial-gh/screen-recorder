@@ -28,7 +28,7 @@ export default function AboutPage() {
           <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
             {APP_NAME}
           </span>
-          <span className="rounded-full border border-border px-2 py-0.5 text-xs text-muted-foreground">
+          <span className="rounded-sm border border-border px-2 py-0.5 text-xs text-muted-foreground">
             v{APP_VERSION}
           </span>
         </div>
@@ -49,7 +49,7 @@ export default function AboutPage() {
           {APP_KEYWORDS.map((keyword) => (
             <span
               key={keyword}
-              className="rounded-full border border-border px-2.5 py-1 text-xs text-muted-foreground"
+              className="rounded-sm border border-border px-2.5 py-1 text-xs text-muted-foreground"
             >
               {keyword}
             </span>
