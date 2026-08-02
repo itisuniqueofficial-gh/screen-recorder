@@ -4,13 +4,32 @@ import { logger } from '@/lib/logger';
 import type { ContainerFormat, VideoCodec } from '@/types/media';
 
 /**
+ * Fetches a (possibly gzip-compressed) asset and wraps it in a blob URL of the
+ * given MIME type. The ffmpeg wasm core is stored gzip-compressed to stay
+ * under the Cloudflare Pages 25 MiB per-file limit; the original bytes are
+ * recovered here before handing the blob URL to the FFmpeg loader.
+ */
+async function toWasmBlobURL(url: string, type: string): Promise<string> {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`Failed to fetch ${url}: ${response.status} ${response.statusText}`);
+  }
+  let buffer = new Uint8Array(await response.arrayBuffer());
+  if (buffer[0] === 0x1f && buffer[1] === 0x8b) {
+    const stream = new Blob([buffer]).stream().pipeThrough(new DecompressionStream('gzip'));
+    buffer = new Uint8Array(await new Response(stream).arrayBuffer());
+  }
+  return URL.createObjectURL(new Blob([buffer], { type }));
+}
+
+/**
  * Thin wrapper around FFmpeg.wasm. The core runs inside its own Web Worker
  * (created by @ffmpeg/ffmpeg), keeping the main thread responsive. All wasm
  * assets are self-hosted under /ffmpeg and pre-cached by the service worker.
  */
 
 const CORE_URL = `${import.meta.env.BASE_URL}ffmpeg/core-ffmpeg-core.js`;
-const WASM_URL = `${import.meta.env.BASE_URL}ffmpeg/core-ffmpeg-core.wasm`;
+const WASM_URL = `${import.meta.env.BASE_URL}ffmpeg/core-ffmpeg-core.wasm.gz`;
 
 let instance: FFmpeg | null = null;
 let loadPromise: Promise<FFmpeg> | null = null;
@@ -85,7 +104,7 @@ async function loadFfmpeg(): Promise<FFmpeg> {
   try {
     const [coreURL, wasmURL] = await Promise.all([
       toBlobURL(CORE_URL, 'text/javascript'),
-      toBlobURL(WASM_URL, 'application/wasm'),
+      toWasmBlobURL(WASM_URL, 'application/wasm'),
     ]);
     await ffmpeg.load({ coreURL, wasmURL });
   } catch (error) {
