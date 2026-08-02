@@ -1,6 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 import { lazy, Suspense, useEffect } from 'react';
-import { createBrowserRouter, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { createBrowserRouter, Navigate, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { AppShell } from '@/components/layout/AppShell';
 import { useSettingsStore } from '@/store/settingsStore';
 import { KeyboardShortcuts } from '@/components/recorder/KeyboardShortcuts';
@@ -66,6 +66,7 @@ export const router = createBrowserRouter([
       { path: 'settings', element: <SettingsPage /> },
       { path: 'about', element: <AboutPage /> },
       { path: 'shortcuts', element: <ShortcutsPage /> },
+      { path: '*', element: <Navigate to="/" replace /> },
     ],
   },
 ]);
