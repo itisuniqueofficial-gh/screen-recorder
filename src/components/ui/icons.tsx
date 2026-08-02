@@ -64,6 +64,10 @@ export function IconCheck(p: IconProps) {
   return <IconShell {...p} icon="fa-solid fa-check" />;
 }
 
+export function IconBars(p: IconProps) {
+  return <IconShell {...p} icon="fa-solid fa-bars" />;
+}
+
 export function IconSettings(p: IconProps) {
   return <IconShell {...p} icon="fa-solid fa-gear" />;
 }

@@ -40,7 +40,7 @@ export function RecordingDock() {
             <button
               type="button"
               onClick={() => useRecorderStore.getState().cancel()}
-              className="rounded-sm bg-danger px-3 py-1 text-xs font-medium text-white hover:opacity-90"
+              className="flex min-h-11 items-center rounded-sm bg-danger px-4 text-sm font-medium text-white hover:opacity-90"
             >
               Cancel
             </button>
@@ -65,7 +65,7 @@ export function RecordingDock() {
                     onClick={resume}
                     aria-label="Resume recording"
                     title="Resume"
-                    className="inline-flex h-9 w-9 items-center justify-center rounded-sm bg-accent text-accent-foreground hover:opacity-90"
+                    className="inline-flex h-11 w-11 items-center justify-center rounded-sm bg-accent text-accent-foreground hover:opacity-90"
                   >
                     <IconPlay size={18} />
                   </button>
@@ -75,7 +75,7 @@ export function RecordingDock() {
                     onClick={pause}
                     aria-label="Pause recording"
                     title="Pause"
-                    className="inline-flex h-9 w-9 items-center justify-center rounded-sm bg-accent text-accent-foreground hover:opacity-90"
+                    className="inline-flex h-11 w-11 items-center justify-center rounded-sm bg-accent text-accent-foreground hover:opacity-90"
                   >
                     <IconPause size={18} />
                   </button>
@@ -86,7 +86,7 @@ export function RecordingDock() {
                   onClick={() => void stop()}
                   aria-label="Stop recording"
                   title="Stop"
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-sm bg-danger text-white hover:opacity-90"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-sm bg-danger text-white hover:opacity-90"
                 >
                   <IconStop size={18} />
                 </button>

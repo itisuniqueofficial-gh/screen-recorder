@@ -24,7 +24,7 @@ import {
   IconTrash,
   IconTrim,
 } from '@/components/ui/icons';
-import { EmptyState, Spinner } from '@/components/ui/primitives';
+import { EmptyState, PageHeader, Spinner } from '@/components/ui/primitives';
 
 function extensionFor(mimeType: string): string {
   return mimeType.includes('mp4') ? 'mp4' : 'webm';
@@ -65,26 +65,26 @@ export default function HistoryPage() {
 
   return (
     <div className="space-y-6">
-      <header className="flex flex-wrap items-center justify-between gap-3">
-        <div>
-          <h1 className="text-2xl font-semibold">History</h1>
-          <p className="mt-1 text-sm text-muted-foreground">
-            {records.length === 0
-              ? 'Your recordings will appear here.'
-              : `${formatNumber(records.length)} recording${records.length === 1 ? '' : 's'}`}
-          </p>
-        </div>
-        {records.length > 0 && (
-          <button
-            type="button"
-            className="sr-button-secondary"
-            onClick={() => void handleClearAll()}
-          >
-            <IconTrash size={16} />
-            Clear all
-          </button>
-        )}
-      </header>
+      <PageHeader
+        title="History"
+        description={
+          records.length === 0
+            ? 'Your recordings will appear here.'
+            : `${formatNumber(records.length)} recording${records.length === 1 ? '' : 's'}`
+        }
+        actions={
+          records.length > 0 && (
+            <button
+              type="button"
+              className="sr-button-secondary"
+              onClick={() => void handleClearAll()}
+            >
+              <IconTrash size={16} />
+              Clear all
+            </button>
+          )
+        }
+      />
 
       {records.length > 0 && (
         <div className="flex flex-wrap items-center gap-2">
@@ -121,7 +121,7 @@ export default function HistoryPage() {
           description="Try a different search or clear the favorites filter."
         />
       ) : (
-        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="grid w-full gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
           {filtered.map((record) => (
             <RecordingCard
               key={record.id}
@@ -249,7 +249,7 @@ function RecordingCard({
         {record.height} · {record.codec?.toUpperCase()}
       </p>
 
-      <div className="flex items-center gap-1 border-t border-border pt-2">
+      <div className="flex flex-wrap items-center gap-1 border-t border-border pt-2">
         <CardAction
           label="Download"
           onClick={() =>
@@ -307,7 +307,7 @@ function CardAction({
       aria-label={label}
       title={label}
       onClick={onClick}
-      className={`inline-flex h-8 w-8 items-center justify-center rounded-sm transition-colors ${
+      className={`inline-flex h-11 w-11 items-center justify-center rounded-sm transition-colors ${
         danger
           ? 'text-muted-foreground hover:bg-danger/10 hover:text-danger'
           : 'text-muted-foreground hover:bg-muted hover:text-foreground'
@@ -475,7 +475,7 @@ function ModalShell({
             type="button"
             onClick={onClose}
             aria-label="Close"
-            className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-sm text-muted-foreground hover:bg-muted hover:text-foreground"
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-sm text-muted-foreground hover:bg-muted hover:text-foreground"
           >
             <IconClose size={18} />
           </button>

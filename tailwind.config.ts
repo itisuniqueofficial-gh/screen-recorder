@@ -5,6 +5,9 @@ export default {
   darkMode: ['class', '[data-theme="dark"]'],
   theme: {
     extend: {
+      screens: {
+        '3xl': '1920px',
+      },
       colors: {
         background: 'rgb(var(--color-background) / <alpha-value>)',
         foreground: 'rgb(var(--color-foreground) / <alpha-value>)',
@@ -49,6 +52,10 @@ export default {
           from: { transform: 'translateY(0.5rem)', opacity: '0' },
           to: { transform: 'translateY(0)', opacity: '1' },
         },
+        'slide-in-left': {
+          from: { transform: 'translateX(-100%)' },
+          to: { transform: 'translateX(0)' },
+        },
         'recording-pulse': {
           '0%, 100%': { opacity: '1' },
           '50%': { opacity: '0.35' },
@@ -57,6 +64,7 @@ export default {
       animation: {
         'fade-in': 'fade-in 0.2s ease-out',
         'slide-up': 'slide-up 0.25s ease-out',
+        'slide-in-left': 'slide-in-left 0.22s ease-out',
         'recording-pulse': 'recording-pulse 1.4s ease-in-out infinite',
       },
     },
