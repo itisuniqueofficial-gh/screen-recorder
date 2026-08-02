@@ -44,7 +44,7 @@ export function RecorderPanel() {
   const busy = status === 'acquiring' || status === 'stopping' || status === 'processing';
 
   return (
-    <div className="sr-card flex flex-col items-center gap-6 px-6 py-10 text-center sm:py-14">
+    <div className="sr-card flex min-h-[60vh] w-full flex-col items-center justify-center gap-8 px-6 py-12 text-center sm:px-10">
       {status === 'error' ? (
         <div className="flex flex-col items-center gap-4">
           <div className="flex h-14 w-14 items-center justify-center rounded-sm bg-danger/10 text-danger">
@@ -146,7 +146,7 @@ function ActiveRecording({
   const stopping = status === 'stopping';
 
   return (
-    <div className="flex w-full max-w-md flex-col items-center gap-6">
+    <div className="flex w-full max-w-2xl flex-col items-center gap-6">
       <div className="flex items-center gap-3">
         <span
           className={`h-3.5 w-3.5 rounded-sm ${
