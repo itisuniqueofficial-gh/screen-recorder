@@ -1,0 +1,43 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: '07:00'
+      timezone: UTC
+    open-pull-requests-limit: 10
+    labels:
+      - dependencies
+      - npm
+    versioning-strategy: increase
+    commit-message:
+      prefix: 'build(deps)'
+      prefix-development: 'build(deps-dev)'
+    groups:
+      react-ecosystem:
+        patterns:
+          - 'react'
+          - 'react-dom'
+          - 'react-router-dom'
+          - 'zustand'
+      linting:
+        patterns:
+          - 'eslint*'
+          - 'prettier*'
+          - 'typescript-eslint*'
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: '07:00'
+      timezone: UTC
+    open-pull-requests-limit: 5
+    labels:
+      - dependencies
+      - github-actions
+    commit-message:
+      prefix: 'ci(deps)'

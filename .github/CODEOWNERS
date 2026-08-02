@@ -1,0 +1,11 @@
+# Default code owners for every file in the repository.
+* @AdiyogX
+
+# Security-sensitive and CI/CD configuration is explicitly owned.
+.github/workflows/ @AdiyogX
+.github/dependabot.yml @AdiyogX
+SECURITY.md @AdiyogX
+DEPLOYMENT.md @AdiyogX
+
+# Release tooling.
+scripts/ @AdiyogX

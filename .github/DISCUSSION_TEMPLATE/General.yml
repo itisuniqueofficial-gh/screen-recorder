@@ -1,0 +1,14 @@
+title: ''
+labels: [general]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for starting a discussion! Please keep it friendly and on-topic.
+  - type: textarea
+    id: question
+    attributes:
+      label: Question or idea
+      description: What would you like to discuss?
+    validations:
+      required: true
