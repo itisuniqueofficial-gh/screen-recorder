@@ -36,6 +36,7 @@ jobs:
           CLOUDFLARE_PROJECT_NAME: ${{ vars.CLOUDFLARE_PROJECT_NAME || 'screen-recorder' }}
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy dist --project-name=${{ vars.CLOUDFLARE_PROJECT_NAME || 'screen-recorder' }} --branch=main
 
       - name: Warn about missing token
