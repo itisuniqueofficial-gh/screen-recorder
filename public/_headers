@@ -10,7 +10,6 @@
 
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
-  Content-Type: text/javascript
   X-Content-Type-Options: nosniff
 
 /icons/*
@@ -18,3 +17,7 @@
 
 /ffmpeg/*
   Cache-Control: public, max-age=86400
+
+/ffmpeg/*.wasm.gz
+  Content-Type: application/wasm
+  Cache-Control: public, max-age=31536000, immutable
