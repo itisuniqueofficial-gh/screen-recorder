@@ -30,17 +30,17 @@ export function RecordingDock() {
 
   return (
     <div className="sr-animate-slide-up fixed bottom-4 left-1/2 z-50 -translate-x-1/2 sm:bottom-6">
-      <div className="flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-2 shadow-lg">
+      <div className="flex items-center gap-2 rounded-sm border border-border bg-surface px-3 py-2">
         {isCountdown ? (
           <div className="flex min-w-40 items-center justify-center gap-3">
-            <span className="sr-animate-recording-pulse inline-flex h-2.5 w-2.5 rounded-full bg-danger" />
+            <span className="sr-animate-recording-pulse inline-flex h-2.5 w-2.5 rounded-sm bg-danger" />
             <span className="text-sm font-semibold tabular-nums">
               Starting in {countdownRemaining}
             </span>
             <button
               type="button"
               onClick={() => useRecorderStore.getState().cancel()}
-              className="rounded-full bg-danger px-3 py-1 text-xs font-medium text-white hover:opacity-90"
+              className="rounded-sm bg-danger px-3 py-1 text-xs font-medium text-white hover:opacity-90"
             >
               Cancel
             </button>
@@ -49,7 +49,7 @@ export function RecordingDock() {
           <>
             <div className="flex items-center gap-2">
               <span
-                className={`h-2.5 w-2.5 rounded-full ${
+                className={`h-2.5 w-2.5 rounded-sm ${
                   isPaused ? 'bg-warning' : 'sr-animate-recording-pulse bg-danger'
                 }`}
               />
@@ -65,7 +65,7 @@ export function RecordingDock() {
                     onClick={resume}
                     aria-label="Resume recording"
                     title="Resume"
-                    className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-accent text-accent-foreground hover:opacity-90"
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-sm bg-accent text-accent-foreground hover:opacity-90"
                   >
                     <IconPlay size={18} />
                   </button>
@@ -75,7 +75,7 @@ export function RecordingDock() {
                     onClick={pause}
                     aria-label="Pause recording"
                     title="Pause"
-                    className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-accent text-accent-foreground hover:opacity-90"
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-sm bg-accent text-accent-foreground hover:opacity-90"
                   >
                     <IconPause size={18} />
                   </button>
@@ -86,7 +86,7 @@ export function RecordingDock() {
                   onClick={() => void stop()}
                   aria-label="Stop recording"
                   title="Stop"
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-danger text-white hover:opacity-90"
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-sm bg-danger text-white hover:opacity-90"
                 >
                   <IconStop size={18} />
                 </button>

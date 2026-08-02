@@ -193,12 +193,12 @@ function RecordingCard({
       <button
         type="button"
         onClick={onPlay}
-        className="relative aspect-video overflow-hidden rounded-md bg-black/10"
+        className="relative aspect-video overflow-hidden rounded-sm bg-black/10"
         aria-label={`Play ${record.name}`}
       >
         <video src={url.current} className="h-full w-full object-cover" preload="metadata" muted />
         <span className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 transition-opacity group-hover:opacity-100">
-          <span className="flex h-11 w-11 items-center justify-center rounded-full bg-accent text-accent-foreground">
+          <span className="flex h-11 w-11 items-center justify-center rounded-sm bg-accent text-accent-foreground">
             <IconPlay size={20} />
           </span>
         </span>
@@ -307,7 +307,7 @@ function CardAction({
       aria-label={label}
       title={label}
       onClick={onClick}
-      className={`inline-flex h-8 w-8 items-center justify-center rounded-md transition-colors ${
+      className={`inline-flex h-8 w-8 items-center justify-center rounded-sm transition-colors ${
         danger
           ? 'text-muted-foreground hover:bg-danger/10 hover:text-danger'
           : 'text-muted-foreground hover:bg-muted hover:text-foreground'
@@ -323,7 +323,7 @@ function PlaybackModal({ record, onClose }: { record: RecordingRecord; onClose: 
   useEffect(() => () => URL.revokeObjectURL(url), [url]);
   return (
     <ModalShell title={record.name} onClose={onClose}>
-      <video src={url} controls autoPlay className="max-h-[60vh] w-full rounded-md bg-black" />
+      <video src={url} controls autoPlay className="max-h-[60vh] w-full rounded-sm bg-black" />
       <dl className="mt-4 grid grid-cols-2 gap-3 text-sm sm:grid-cols-3">
         <MetaItem label="Duration" value={formatDuration(record.durationMs)} />
         <MetaItem label="Size" value={formatBytes(record.sizeBytes)} />
@@ -407,10 +407,10 @@ function TrimModal({ record, onClose }: { record: RecordingRecord; onClose: () =
 
       {busy && (
         <div className="flex items-center gap-3">
-          <Spinner className="h-5 w-5 text-accent" />
-          <div className="h-2 flex-1 overflow-hidden rounded-full bg-muted">
+          <Spinner size={20} className="text-accent" />
+          <div className="h-2 flex-1 overflow-hidden rounded-sm bg-muted">
             <div
-              className="h-full rounded-full bg-accent transition-[width]"
+              className="h-full rounded-sm bg-accent transition-[width]"
               style={{ width: `${Math.round(progress * 100)}%` }}
             />
           </div>
@@ -463,7 +463,7 @@ function ModalShell({
       onClick={onClose}
     >
       <div
-        className="sr-animate-slide-up max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-xl border border-border bg-surface p-5 shadow-xl"
+        className="sr-animate-slide-up max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-sm border border-border bg-surface p-5"
         onClick={(event) => event.stopPropagation()}
         role="dialog"
         aria-modal="true"
@@ -475,7 +475,7 @@ function ModalShell({
             type="button"
             onClick={onClose}
             aria-label="Close"
-            className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-muted-foreground hover:bg-muted hover:text-foreground"
+            className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-sm text-muted-foreground hover:bg-muted hover:text-foreground"
           >
             <IconClose size={18} />
           </button>
@@ -488,7 +488,7 @@ function ModalShell({
 
 function MetaItem({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-md border border-border px-3 py-2">
+    <div className="rounded-sm border border-border px-3 py-2">
       <dt className="text-xs text-muted-foreground">{label}</dt>
       <dd className="mt-0.5 font-medium">{value}</dd>
     </div>

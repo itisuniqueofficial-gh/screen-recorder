@@ -29,7 +29,7 @@ function ThemeToggle() {
       onClick={cycle}
       aria-label={`Theme: ${mode}. Click to switch.`}
       title={`Theme: ${mode}`}
-      className="inline-flex h-9 w-9 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+      className="inline-flex h-9 w-9 items-center justify-center rounded-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
     >
       {mode === 'dark' ? <IconMoon /> : <IconSun />}
     </button>
@@ -42,7 +42,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       <aside className="border-b border-border bg-surface md:sticky md:top-0 md:h-screen md:w-60 md:flex-col md:border-b-0 md:border-r">
         <div className="flex h-16 items-center justify-between px-4 md:h-20 md:justify-start md:gap-2">
           <NavLink to="/" className="flex items-center gap-2.5">
-            <span className="flex h-9 w-9 items-center justify-center rounded-md bg-accent text-accent-foreground">
+            <span className="flex h-9 w-9 items-center justify-center rounded-sm bg-accent text-accent-foreground">
               <IconRecord size={18} />
             </span>
             <span className="hidden leading-tight md:block">
@@ -62,7 +62,7 @@ export function AppShell({ children }: { children: ReactNode }) {
               to={to}
               end={end}
               className={({ isActive }) =>
-                `flex shrink-0 items-center gap-2.5 rounded-md px-3 py-2 text-sm font-medium transition-colors ${
+                `flex shrink-0 items-center gap-2.5 rounded-sm px-3 py-2 text-sm font-medium transition-colors ${
                   isActive
                     ? 'bg-accent/10 text-accent'
                     : 'text-muted-foreground hover:bg-muted hover:text-foreground'

@@ -21,7 +21,6 @@ export default {
       },
       fontFamily: {
         sans: [
-          'InterVariable',
           'Inter',
           'system-ui',
           '-apple-system',
@@ -38,16 +37,8 @@ export default {
       },
       borderRadius: {
         none: '0',
-        sm: '0.25rem',
-        DEFAULT: '0.375rem',
-        md: '0.5rem',
-        lg: '0.75rem',
-        full: '9999px',
-      },
-      boxShadow: {
-        none: 'none',
-        sm: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
-        DEFAULT: '0 1px 3px 0 rgb(0 0 0 / 0.1)',
+        DEFAULT: '0',
+        sm: '0.125rem',
       },
       keyframes: {
         'fade-in': {

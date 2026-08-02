@@ -24,7 +24,7 @@ export function IconButton({
       type="button"
       aria-label={label}
       title={label}
-      className={`inline-flex h-9 w-9 items-center justify-center rounded-md transition-colors disabled:opacity-40 disabled:cursor-not-allowed ${tone} ${className}`}
+      className={`inline-flex h-9 w-9 items-center justify-center rounded-sm transition-colors disabled:opacity-40 disabled:cursor-not-allowed ${tone} ${className}`}
       {...rest}
     >
       {children}
@@ -32,22 +32,13 @@ export function IconButton({
   );
 }
 
-export function Spinner({ className = '' }: { className?: string }) {
+export function Spinner({ size = 20, className = '' }: { size?: number; className?: string }) {
   return (
-    <svg
+    <i
       aria-hidden="true"
-      viewBox="0 0 24 24"
-      fill="none"
-      className={`h-5 w-5 animate-spin ${className}`}
-    >
-      <circle cx="12" cy="12" r="10" stroke="currentColor" strokeOpacity="0.25" strokeWidth="3" />
-      <path
-        d="M12 2a10 10 0 0 1 10 10"
-        stroke="currentColor"
-        strokeWidth="3"
-        strokeLinecap="round"
-      />
-    </svg>
+      className={`fa-solid fa-circle-notch fa-spin ${className}`}
+      style={{ fontSize: size }}
+    />
   );
 }
 
@@ -64,7 +55,7 @@ export function EmptyState({
 }) {
   return (
     <div className="flex flex-col items-center justify-center gap-3 py-16 text-center">
-      <div className="flex h-14 w-14 items-center justify-center rounded-full bg-muted text-muted-foreground">
+      <div className="flex h-14 w-14 items-center justify-center rounded-sm bg-muted text-muted-foreground">
         {icon}
       </div>
       <h3 className="text-base font-semibold">{title}</h3>
