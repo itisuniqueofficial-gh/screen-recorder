@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+# The app is a client-side PWA; disallow nothing.

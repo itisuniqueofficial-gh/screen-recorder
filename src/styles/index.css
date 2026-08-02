@@ -1,0 +1,165 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-background: 255 255 255;
+    --color-foreground: 15 23 42;
+    --color-muted: 243 244 246;
+    --color-muted-foreground: 107 114 128;
+    --color-surface: 255 255 255;
+    --color-border: 229 231 235;
+    --color-accent: 37 99 235;
+    --color-accent-foreground: 255 255 255;
+    --color-danger: 220 38 38;
+    --color-success: 22 163 74;
+    --color-warning: 217 119 6;
+    --color-ring: 37 99 235;
+  }
+
+  .dark {
+    --color-background: 9 11 18;
+    --color-foreground: 229 231 235;
+    --color-muted: 24 27 38;
+    --color-muted-foreground: 148 163 184;
+    --color-surface: 15 18 28;
+    --color-border: 45 51 68;
+    --color-accent: 96 165 250;
+    --color-accent-foreground: 15 23 42;
+    --color-danger: 239 68 68;
+    --color-success: 34 197 94;
+    --color-warning: 245 158 11;
+    --color-ring: 96 165 250;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family:
+      'Inter Variable',
+      ui-sans-serif,
+      system-ui,
+      -apple-system,
+      'Segoe UI',
+      Roboto,
+      'Helvetica Neue',
+      Arial,
+      sans-serif;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  ::selection {
+    @apply bg-accent text-accent-foreground;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+}
+
+@layer components {
+  .sr-button {
+    @apply inline-flex items-center justify-center gap-2 rounded-md border border-transparent px-3.5 py-2 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .sr-button-primary {
+    @apply sr-button bg-accent text-accent-foreground hover:opacity-90;
+  }
+
+  .sr-button-secondary {
+    @apply sr-button border-border bg-surface hover:bg-muted;
+  }
+
+  .sr-button-danger {
+    @apply sr-button bg-danger text-white hover:opacity-90;
+  }
+
+  .sr-button-ghost {
+    @apply sr-button hover:bg-muted;
+  }
+
+  .sr-input {
+    @apply w-full rounded-md border border-border bg-surface px-3 py-2 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring;
+  }
+
+  .sr-select {
+    @apply w-full rounded-md border border-border bg-surface px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring;
+  }
+
+  .sr-checkbox {
+    @apply h-4 w-4 shrink-0 rounded border-border bg-surface text-accent focus:ring-2 focus:ring-ring;
+  }
+
+  .sr-card {
+    @apply rounded-lg border border-border bg-surface;
+  }
+
+  .sr-label {
+    @apply text-sm font-medium text-foreground;
+  }
+
+  .sr-hint {
+    @apply text-xs text-muted-foreground;
+  }
+}
+
+@layer utilities {
+  .sr-animate-fade-in {
+    animation: sr-fade-in 0.2s ease-out;
+  }
+
+  .sr-animate-slide-up {
+    animation: sr-slide-up 0.25s ease-out;
+  }
+
+  .sr-animate-recording-pulse {
+    animation: sr-recording-pulse 1.4s ease-in-out infinite;
+  }
+
+  .sr-scrollbar-none {
+    scrollbar-width: none;
+  }
+
+  .sr-scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@keyframes sr-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes sr-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes sr-recording-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}

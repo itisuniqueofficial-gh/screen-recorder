@@ -1,0 +1,15 @@
+dist
+node_modules
+coverage
+playwright-report
+test-results
+public/ffmpeg
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+CHANGELOG.md
+docs
+.github
+.husky
+*~
+*.log
