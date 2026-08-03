@@ -88,10 +88,7 @@ try {
 } catch {
   existing = '';
 }
-existing = existing.replace(/^# Changelog[\s\S]*?\n\n/, '');
-if (existing.startsWith('## [Unreleased]')) {
-  existing = existing.replace('## [Unreleased]', '');
-}
+existing = existing.replace(/^# Changelog[\s\S]*?\n## \[Unreleased\]\n?/, '').trim();
 const existingTrimmed = existing.replace(/\n{3,}/g, '\n\n').trim();
 
 const content = `${header}\n## [Unreleased]\n\n${section}\n${existingTrimmed ? `\n\n${existingTrimmed}\n` : ''}`;
