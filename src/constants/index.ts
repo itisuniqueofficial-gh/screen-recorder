@@ -3,7 +3,7 @@ export const APP_DESCRIPTION =
   'Professional privacy-first browser-based screen recorder. Everything runs locally in your browser.';
 export const APP_VERSION = '1.0.0';
 export const APP_REPO = 'https://github.com/itisuniqueofficial-gh/screen-recorder';
-export const APP_BASE_URL = 'https://screen-recorder.pages.dev';
+export const APP_BASE_URL = 'https://sr.itisuniqueofficial.com';
 export const APP_KEYWORDS = [
   'screen recorder',
   'screen capture',
