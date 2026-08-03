@@ -3,7 +3,9 @@ import { expect, test } from '@playwright/test';
 test('home page loads with app brand', async ({ page }) => {
   await page.goto('/');
   await expect(page).toHaveTitle(/Screen Recorder/);
-  await expect(page.getByText('Screen Recorder', { exact: true }).first()).toBeVisible();
+  await expect(
+    page.getByText('Screen Recorder', { exact: true }).filter({ visible: true }).first()
+  ).toBeVisible();
 });
 
 test('client-side routing renders settings page', async ({ page }) => {

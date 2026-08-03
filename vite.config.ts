@@ -63,7 +63,7 @@ export default defineConfig((): UserConfig => {
           globPatterns: ['**/*.{js,css,html,svg,png,ico,woff2}'],
           runtimeCaching: [
             {
-              urlPattern: /\.(?:wasm|js)$/,
+              urlPattern: /\.(?:wasm\.gz|wasm|js)$/,
               handler: 'CacheFirst',
               options: {
                 cacheName: 'ffmpeg-assets',
