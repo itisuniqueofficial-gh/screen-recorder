@@ -1,7 +1,7 @@
 {
   "name": "screen-recorder",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Professional privacy-first browser-based screen recorder. Records screen, tab, window, webcam, mic and system audio. Runs entirely in the browser.",
   "type": "module",
   "license": "MIT",
@@ -67,7 +67,7 @@
     "@eslint/js": "^9.18.0",
     "@playwright/test": "^1.50.1",
     "@testing-library/dom": "^10.4.0",
-    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/jest-dom": "^7.0.0",
     "@testing-library/react": "^16.1.0",
     "@testing-library/user-event": "^14.6.1",
     "@types/node": "^22.10.7",
