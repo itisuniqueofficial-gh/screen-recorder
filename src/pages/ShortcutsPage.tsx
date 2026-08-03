@@ -1,7 +1,7 @@
 import { useSettingsStore } from '@/store/settingsStore';
 import { SHORTCUTS, formatShortcutKeys } from '@/config/shortcuts';
 import { IconKeyboard } from '@/components/ui/icons';
-import { EmptyState } from '@/components/ui/primitives';
+import { EmptyState, PageHeader } from '@/components/ui/primitives';
 
 export default function ShortcutsPage() {
   const enabled = useSettingsStore((s) => s.settings.keyboardShortcutsEnabled);
@@ -9,26 +9,24 @@ export default function ShortcutsPage() {
 
   return (
     <div className="space-y-6">
-      <header className="flex flex-wrap items-center justify-between gap-3">
-        <div>
-          <h1 className="text-2xl font-semibold">Keyboard shortcuts</h1>
-          <p className="mt-1 text-sm text-muted-foreground">
-            Control recording without touching the mouse.
-          </p>
-        </div>
-        <label className="flex cursor-pointer items-center gap-2 text-sm">
-          <input
-            type="checkbox"
-            checked={enabled}
-            onChange={(event) => setSetting('keyboardShortcutsEnabled', event.target.checked)}
-            className="sr-checkbox"
-          />
-          Enabled
-        </label>
-      </header>
+      <PageHeader
+        title="Keyboard shortcuts"
+        description="Control recording without touching the mouse."
+        actions={
+          <label className="flex cursor-pointer items-center gap-2 text-sm">
+            <input
+              type="checkbox"
+              checked={enabled}
+              onChange={(event) => setSetting('keyboardShortcutsEnabled', event.target.checked)}
+              className="sr-checkbox"
+            />
+            Enabled
+          </label>
+        }
+      />
 
       {enabled ? (
-        <div className="overflow-hidden rounded-lg border border-border">
+        <div className="overflow-x-auto rounded-sm border border-border">
           <table className="w-full text-left text-sm">
             <thead className="border-b border-border bg-surface">
               <tr>
@@ -57,7 +55,7 @@ export default function ShortcutsPage() {
                     {shortcut.description}
                   </td>
                   <td className="px-4 py-3 text-right">
-                    <kbd className="rounded-md border border-border bg-surface px-2 py-1 text-xs text-foreground">
+                    <kbd className="rounded-sm border border-border bg-surface px-2 py-1 text-xs text-foreground">
                       {formatShortcutKeys(shortcut.keys)}
                     </kbd>
                   </td>
