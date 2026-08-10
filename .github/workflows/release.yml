@@ -42,7 +42,7 @@ jobs:
           ls -lh release
 
       - name: Generate SBOM
-        uses: anchore/sbom-action@v0.17.5
+        uses: anchore/sbom-action@v0.24.0
         with:
           path: .
           format: spdx-json
